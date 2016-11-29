@@ -1,6 +1,6 @@
-{application, vmq_plugin_dev,
+{application, vernemq_dev,
  [
-  {description, "VerneMQ plugin development dependencies"},
+  {description, "VerneMQ development dependencies"},
   {vsn, git},
   {registered, []},
   {applications, [

@@ -1,0 +1,12 @@
+{application, vmq_plugin_dev,
+ [
+  {description, "VerneMQ plugin development dependencies"},
+  {vsn, git},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []},
+  {licenses, ["Apache License 2.0"]}
+ ]}.

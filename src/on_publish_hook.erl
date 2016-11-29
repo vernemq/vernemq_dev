@@ -1,5 +1,5 @@
 -module(on_publish_hook).
--include("vmq_plugin_types.hrl").
+-include("vernemq_dev.hrl").
 
 %% called as an 'all'-hook, return value is ignored
 -callback on_publish(UserName      :: username(),

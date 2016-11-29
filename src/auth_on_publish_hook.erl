@@ -1,5 +1,5 @@
 -module(auth_on_publish_hook).
--include("vmq_plugin_types.hrl").
+-include("vernemq_dev.hrl").
 -type msg_modifier() :: {topic, topic()}
                       | {payload, payload()}
                       | {reg_view, reg_view()}

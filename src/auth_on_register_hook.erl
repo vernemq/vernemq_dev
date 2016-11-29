@@ -1,5 +1,5 @@
 -module(auth_on_register_hook).
--include("vmq_plugin_types.hrl").
+-include("vernemq_dev.hrl").
 
 -type reg_modifiers()   :: {mountpoint, mountpoint()}
                          | {regview, reg_view()}

@@ -1,5 +1,5 @@
 -module(auth_on_subscribe_hook).
--include("vmq_plugin_types.hrl").
+-include("vernemq_dev.hrl").
 
 %% called as an all_till_ok - hook
 -callback auth_on_subscribe(UserName      :: username(),

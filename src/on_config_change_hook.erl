@@ -1,5 +1,5 @@
 -module(on_config_change_hook).
--include("vmq_plugin_types.hrl").
+-include("vernemq_dev.hrl").
 
 -type config_val()          :: {Property :: atom(), Value :: any()}.
 -type application_config()  :: {Application :: atom(), [config_val()]}.

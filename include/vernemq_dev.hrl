@@ -1,3 +1,5 @@
+-define(true, 1).
+-define(false, 0).
 -type peer()                :: {inet:ip_address(), inet:port_number()}.
 -type username()            :: binary() | undefined.
 -type password()            :: binary() | undefined.
@@ -5,9 +7,7 @@
 -type mountpoint()          :: string().
 -type subscriber_id()       :: {mountpoint(), client_id()}.
 -type reg_view()            :: atom().
--type topic()               :: [binary()] | binary().
+-type topic()               :: [binary()] | binary(). %% binary() for test purposes only.
 -type qos()                 :: 0 | 1 | 2.
--type routing_key()         :: [binary()].
 -type payload()             :: binary().
--type flag()                :: boolean().
--type msg_ref()             :: binary().
+-type flag()                :: ?true | ?false | boolean() | empty. % empty for test purposes only

@@ -6,4 +6,4 @@
                              QoS           :: qos(),
                              Topic         :: topic(),
                              Payload       :: payload(),
-                             Retain        :: flag()) -> any().
+                             IsRetain      :: flag()) -> any().

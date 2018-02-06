@@ -1,3 +1,5 @@
+-ifndef(VERNEMQ_DEV_HRL).
+-define(VERNEMQ_DEV_HRL, true).
 -define(true, 1).
 -define(false, 0).
 -type peer()                :: {inet:ip_address(), inet:port_number()}.
@@ -11,3 +13,4 @@
 -type qos()                 :: 0 | 1 | 2.
 -type payload()             :: binary().
 -type flag()                :: ?true | ?false | boolean() | empty. % empty for test purposes only
+-endif.

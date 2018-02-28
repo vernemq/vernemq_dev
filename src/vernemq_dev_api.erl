@@ -31,6 +31,7 @@ unword_topic([Word|_] = Topic) when is_binary(Word) ->
     lists:reverse(unword_topic(Topic, []));
 unword_topic(Topic) when is_binary(Topic) ->
     Topic;
+unword_topic([]) -> [];
 unword_topic(undefined) -> undefined;
 unword_topic(empty) -> empty.
 

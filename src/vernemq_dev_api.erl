@@ -18,7 +18,7 @@
 -export([unword_topic/1,
          disconnect_by_subscriber_id/2]).
 
--type disconnect_flags() :: [do_cleanup].
+-type disconnect_flag() :: do_cleanup.
 
 %% @doc Disconnect a client by {@link subscriber_id().}
 %%
@@ -26,7 +26,7 @@
 %% disconnected.
 -spec disconnect_by_subscriber_id(SId, Opts) -> ok | not_found when
       SId  :: subscriber_id(),
-      Opts :: disconnect_flags().
+      Opts :: [disconnect_flag()].
 disconnect_by_subscriber_id(SubscriberId, Opts) ->
     case vmq_queue_sup_sup:get_queue_pid(SubscriberId) of
         not_found ->

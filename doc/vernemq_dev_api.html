@@ -15,39 +15,22 @@
 
 <h2><a name="types">Data Types</a></h2>
 
-<h3 class="typedecl"><a name="type-disconnect_flag">disconnect_flag()</a></h3>
-<p><tt>disconnect_flag() = discard_state</tt></p>
+<h3 class="typedecl"><a name="type-disconnect_flags">disconnect_flags()</a></h3>
+<p><tt>disconnect_flags() = [do_cleanup]</tt></p>
 
 
 <h2><a name="index">Function Index</a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#disconnect-0">disconnect/0</a></td><td>Disconnect a client within a hook context.</td></tr>
-<tr><td valign="top"><a href="#disconnect-1">disconnect/1</a></td><td>Disconnect a client by <a href="#type-pid"><code>pid()</code></a>.</td></tr>
-<tr><td valign="top"><a href="#disconnect_by_subscriber_id-2">disconnect_by_subscriber_id/2</a></td><td>Disconnect a client by <a href="#type-subscriber_id"><code>subscriber_id()</code></a></td></tr>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#disconnect_by_subscriber_id-2">disconnect_by_subscriber_id/2</a></td><td>Disconnect a client by <a href="#type-subscriber_id"><code>subscriber_id()</code></a></td></tr>
 <tr><td valign="top"><a href="#unword_topic-1">unword_topic/1</a></td><td>Convert a <a href="#type-topic"><code>topic()</code></a> list into an <a href="#type-iolist"><code>iolist()</code></a>  
 which can be flattened into a binary.</td></tr>
 </table>
 
 <h2><a name="functions">Function Details</a></h2>
 
-<h3 class="function"><a name="disconnect-0">disconnect/0</a></h3>
-<div class="spec">
-<p><tt>disconnect() -&gt; ok</tt><br></p>
-</div><p><p>Disconnect a client within a hook context.</p>
- 
-  This function can only be used from within a plugin hook context.</p>
-
-<h3 class="function"><a name="disconnect-1">disconnect/1</a></h3>
-<div class="spec">
-<p><tt>disconnect(SessionPid) -&gt; ok</tt>
-<ul class="definitions"><li><tt>SessionPid = pid()</tt></li></ul></p>
-</div><p><p>Disconnect a client by <a href="#type-pid"><code>pid()</code></a>.</p>
- 
-  Given the session pid of a client, forcefully disconnect it.</p>
-
 <h3 class="function"><a name="disconnect_by_subscriber_id-2">disconnect_by_subscriber_id/2</a></h3>
 <div class="spec">
 <p><tt>disconnect_by_subscriber_id(SId, Opts) -&gt; ok | not_found</tt>
-<ul class="definitions"><li><tt>SId = <a href="#type-subscriber_id">subscriber_id()</a></tt></li><li><tt>Opts = [<a href="#type-disconnect_flag">disconnect_flag()</a>]</tt></li></ul></p>
+<ul class="definitions"><li><tt>SId = <a href="#type-subscriber_id">subscriber_id()</a></tt></li><li><tt>Opts = <a href="#type-disconnect_flags">disconnect_flags()</a></tt></li></ul></p>
 </div><p><p>Disconnect a client by <a href="#type-subscriber_id"><code>subscriber_id()</code></a></p>
  
   Given a subscriber_id the client is looked up in the cluster and

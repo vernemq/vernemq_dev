@@ -13,32 +13,12 @@
 %% limitations under the License.
 -module(vernemq_dev_api).
 
--include("vernemq_dev.hrl").
+-include_lib("vernemq_dev/include/vernemq_dev.hrl").
 
 -export([unword_topic/1,
-         disconnect/0,
-         disconnect/1,
          disconnect_by_subscriber_id/2]).
 
-
-
-%% @doc Disconnect a client within a hook context.
-%%
-%% This function can only be used from within a plugin hook context.
--spec disconnect() -> ok.
-disconnect() ->
-    disconnect(self()).
-
-%% @doc Disconnect a client by {@link pid()}.
-%%
-%% Given the session pid of a client, forcefully disconnect it.
--spec disconnect(SessionPid) -> ok when
-      SessionPid :: pid().
-disconnect(SessionPid) ->
-    SessionPid ! disconnect,
-    ok.
-
--type disconnect_flag() :: discard_state.
+-type disconnect_flags() :: [do_cleanup].
 
 %% @doc Disconnect a client by {@link subscriber_id().}
 %%
@@ -46,34 +26,14 @@ disconnect(SessionPid) ->
 %% disconnected.
 -spec disconnect_by_subscriber_id(SId, Opts) -> ok | not_found when
       SId  :: subscriber_id(),
-      Opts :: [disconnect_flag()].
-disconnect_by_subscriber_id({MP, ClientId}, Opts) ->
-    QueryString = ["SELECT session_pid, queue_pid FROM sessions WHERE mountpoint=\"", MP,
-                   "\" AND client_id=\"", ClientId, "\""],
-    Results = vmq_ql_query_mgr:fold_query(fun(Row,Acc) -> [Row|Acc] end, [], QueryString),
-    case Results of
-        [] -> not_found;
-        [#{queue_pid := _QPid,
-           session_pid := SPid}] ->
-            case discard_state(Opts) of
-                true ->
-                    %% TODO - discarding state doesn't work yet since:
-                    %%
-                    %% 1) vmq_queue:set_opts/2 currently does not
-                    %% handle the `clean_session` flag.
-                    %%
-                    %% 2) vmq_queue:set_opts/2 hardwires the session
-                    %% to self()...
-                    disconnect(SPid);
-                false ->
-                    disconnect(SPid)
-            end,
-            ok
+      Opts :: disconnect_flags().
+disconnect_by_subscriber_id(SubscriberId, Opts) ->
+    case vmq_queue_sup_sup:get_queue_pid(SubscriberId) of
+        not_found ->
+            not_found;
+        QueuePid ->
+            vmq_queue:force_disconnect(QueuePid, proplists:get_bool(do_cleanup, Opts))
     end.
-
-%% @private
-discard_state(Opts) ->
-    proplists:get_bool(discard_state, Opts).
 
 %% @doc Convert a {@link topic().} list into an {@link iolist().}
 %% which can be flattened into a binary.

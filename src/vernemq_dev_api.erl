@@ -13,9 +13,27 @@
 %% limitations under the License.
 -module(vernemq_dev_api).
 
--include("vernemq_dev.hrl").
+-include_lib("vernemq_dev/include/vernemq_dev.hrl").
 
--export([unword_topic/1]).
+-export([unword_topic/1,
+         disconnect_by_subscriber_id/2]).
+
+-type disconnect_flag() :: do_cleanup.
+
+%% @doc Disconnect a client by {@link subscriber_id().}
+%%
+%% Given a subscriber_id the client is looked up in the cluster and
+%% disconnected.
+-spec disconnect_by_subscriber_id(SId, Opts) -> ok | not_found when
+      SId  :: subscriber_id(),
+      Opts :: [disconnect_flag()].
+disconnect_by_subscriber_id(SubscriberId, Opts) ->
+    case vmq_queue_sup_sup:get_queue_pid(SubscriberId) of
+        not_found ->
+            not_found;
+        QueuePid ->
+            vmq_queue:force_disconnect(QueuePid, proplists:get_bool(do_cleanup, Opts))
+    end.
 
 %% @doc Convert a {@link topic().} list into an {@link iolist().}
 %% which can be flattened into a binary.
@@ -43,5 +61,3 @@ unword_topic([<<>>|Topic], Acc) ->
     unword_topic(Topic, [$/|Acc]);
 unword_topic([Word|Rest], Acc) ->
     unword_topic(Rest, [$/, Word|Acc]).
-
-

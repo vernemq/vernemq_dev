@@ -10,15 +10,31 @@
 <hr>
 
 <h1>Module vernemq_dev_api</h1>
-<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+<ul class="index"><li><a href="#types">Data Types</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="types">Data Types</a></h2>
+
+<h3 class="typedecl"><a name="type-disconnect_flag">disconnect_flag()</a></h3>
+<p><tt>disconnect_flag() = do_cleanup</tt></p>
 
 
 <h2><a name="index">Function Index</a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#unword_topic-1">unword_topic/1</a></td><td>Convert a <a href="#type-topic"><code>topic()</code></a> list into an <a href="#type-iolist"><code>iolist()</code></a>  
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#disconnect_by_subscriber_id-2">disconnect_by_subscriber_id/2</a></td><td>Disconnect a client by <a href="#type-subscriber_id"><code>subscriber_id()</code></a></td></tr>
+<tr><td valign="top"><a href="#unword_topic-1">unword_topic/1</a></td><td>Convert a <a href="#type-topic"><code>topic()</code></a> list into an <a href="#type-iolist"><code>iolist()</code></a>  
 which can be flattened into a binary.</td></tr>
 </table>
 
 <h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="disconnect_by_subscriber_id-2">disconnect_by_subscriber_id/2</a></h3>
+<div class="spec">
+<p><tt>disconnect_by_subscriber_id(SId, Opts) -&gt; ok | not_found</tt>
+<ul class="definitions"><li><tt>SId = <a href="#type-subscriber_id">subscriber_id()</a></tt></li><li><tt>Opts = [<a href="#type-disconnect_flag">disconnect_flag()</a>]</tt></li></ul></p>
+</div><p><p>Disconnect a client by <a href="#type-subscriber_id"><code>subscriber_id()</code></a></p>
+ 
+  Given a subscriber_id the client is looked up in the cluster and
+  disconnected.</p>
 
 <h3 class="function"><a name="unword_topic-1">unword_topic/1</a></h3>
 <div class="spec">

@@ -32,7 +32,7 @@
            clean_start => flag(),
            max_message_size => non_neg_integer(),
            subscriber_id => subscriber_id(),
-           shared_subscription_policy => sg_policy(),
+           shared_subscription_policy => shared_sub_policy(),
            max_online_messages => non_neg_integer(),
            max_offline_messages => non_neg_integer()
          }.

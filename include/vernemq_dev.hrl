@@ -16,6 +16,7 @@
 -type subopts() :: map().
 -type subinfo() :: qos() | {qos(), subopts()}.
 -type properties() :: map().
+-type sg_policy() :: prefer_local | local_only | random.
 
 %% reason codes names
 -define(SUCCESS,                        success).

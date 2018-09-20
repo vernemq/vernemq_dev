@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_client_gone_hook).
 -include("vernemq_dev.hrl").
 

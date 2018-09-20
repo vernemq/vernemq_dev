@@ -1,3 +1,4 @@
+%% @hidden
 -module(auth_on_register_m5_hook).
 -include("vernemq_dev.hrl").
 -include("vernemq_dev_int.hrl").

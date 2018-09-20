@@ -1,3 +1,4 @@
+%% @hidden
 -module(auth_on_publish_m5_hook).
 -include("vernemq_dev_int.hrl").
 -callback auth_on_publish_m5(UserName      :: username(),

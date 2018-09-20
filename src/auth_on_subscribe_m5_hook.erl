@@ -1,3 +1,4 @@
+%% @hidden
 -module(auth_on_subscribe_m5_hook).
 -include("vernemq_dev_int.hrl").
 

@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_config_change_hook).
 -include("vernemq_dev.hrl").
 

@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_deliver_m5_hook).
 -include("vernemq_dev_int.hrl").
 

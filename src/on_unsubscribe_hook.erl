@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_unsubscribe_hook).
 -include("vernemq_dev.hrl").
 

@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_register_hook).
 -include("vernemq_dev.hrl").
 

@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_client_wakeup_hook).
 -include("vernemq_dev.hrl").
 

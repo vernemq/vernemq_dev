@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_deliver_hook).
 -include("vernemq_dev.hrl").
 -type msg_modifier() :: {topic, topic()}

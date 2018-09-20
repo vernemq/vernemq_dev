@@ -15,8 +15,24 @@
 
 <h2><a name="types">Data Types</a></h2>
 
+<h3 class="typedecl"><a name="type-client_id">client_id()</a></h3>
+<p><tt>client_id() = binary()</tt></p>
+
+
 <h3 class="typedecl"><a name="type-disconnect_flag">disconnect_flag()</a></h3>
 <p><tt>disconnect_flag() = do_cleanup</tt></p>
+
+
+<h3 class="typedecl"><a name="type-mountpoint">mountpoint()</a></h3>
+<p><tt>mountpoint() = string()</tt></p>
+
+
+<h3 class="typedecl"><a name="type-subscriber_id">subscriber_id()</a></h3>
+<p><tt>subscriber_id() = {<a href="#type-mountpoint">mountpoint()</a>, <a href="#type-client_id">client_id()</a>}</tt></p>
+
+
+<h3 class="typedecl"><a name="type-topic">topic()</a></h3>
+<p><tt>topic() = [binary()] | binary()</tt></p>
 
 
 <h2><a name="index">Function Index</a></h2>

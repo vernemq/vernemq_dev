@@ -1,7 +1,3 @@
 %% encoding: UTF-8
 {application,vernemq_dev}.
-{modules,[auth_on_publish_hook,auth_on_register_hook,auth_on_subscribe_hook,
-          on_client_gone_hook,on_client_offline_hook,on_client_wakeup_hook,
-          on_config_change_hook,on_deliver_hook,on_offline_message_hook,
-          on_publish_hook,on_register_hook,on_subscribe_hook,
-          on_unsubscribe_hook,vernemq_dev_api]}.
+{modules,[vernemq_dev_api]}.

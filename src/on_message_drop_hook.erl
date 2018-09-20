@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_message_drop_hook).
 -include("vernemq_dev.hrl").
 

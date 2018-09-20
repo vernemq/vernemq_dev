@@ -1,3 +1,4 @@
+%% @hidden
 -module(on_offline_message_hook).
 -include("vernemq_dev.hrl").
 

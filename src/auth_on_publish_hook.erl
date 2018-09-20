@@ -1,3 +1,4 @@
+%% @hidden
 -module(auth_on_publish_hook).
 -include("vernemq_dev.hrl").
 -type msg_modifier() :: {topic, topic()}

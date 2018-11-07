@@ -18,13 +18,13 @@
 
 -type reg_properties() ::
         #{
-           ?P_SESSION_EXPIRY_INTERVAL_ASSOC,
-           ?P_RECEIVE_MAX_ASSOC,
-           ?P_TOPIC_ALIAS_MAX_ASSOC,
-           ?P_MAX_PACKET_SIZE_ASSOC,
-           ?P_REQUEST_RESPONSE_INFO_ASSOC,
-           ?P_REQUEST_PROBLEM_INFO_ASSOC,
-           ?P_USER_PROPERTY_ASSOC
+          p_session_expiry_interval => seconds(),
+          p_receive_max => 1..65535,
+          p_topic_alias_max => 1..65535,
+          p_max_packet_size => 1..4294967296,
+          p_request_response_info => boolean(),
+          p_request_problem_info => boolean(),
+          p_user_property => [user_property()]
          }.
 
 -type reg_modifiers()   ::

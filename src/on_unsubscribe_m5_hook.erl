@@ -13,7 +13,7 @@
 
 -type unsub_properties() ::
         #{
-           ?P_USER_PROPERTY_ASSOC
+          p_user_property => [user_property()]
          }.
 
 -type unsub_modifiers() ::

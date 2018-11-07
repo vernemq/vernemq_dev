@@ -17,13 +17,13 @@
 
 -type pub_properties() ::
         #{
-           ?P_PAYLOAD_FORMAT_INDICATOR_ASSOC,
-           ?P_MESSAGE_EXPIRY_INTERVAL_ASSOC,
-           ?P_CONTENT_TYPE_ASSOC,
-           ?P_RESPONSE_TOPIC_ASSOC,
-           ?P_CORRELATION_DATA_ASSOC,
-           ?P_TOPIC_ALIAS_ASSOC,
-           ?P_USER_PROPERTY_ASSOC
+          p_payload_format_indicator => unspecified | utf8,
+          p_message_expiry_interval => seconds(),
+          p_content_type => utf8string(),
+          p_response_topic => topic(),
+          p_correlation_data => binary(),
+          p_topic_alias => 1..65535,
+          p_user_property => [user_property()]
          }.
 
 -type msg_modifier() ::
@@ -41,6 +41,5 @@
         #{
            reason_code => reason_code_name()
          }.
-
 
 -export_type([msg_modifier/0]).

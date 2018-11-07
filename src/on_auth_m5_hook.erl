@@ -13,8 +13,8 @@
 
 -type auth_properties() ::
         #{
-           ?P_AUTHENTICATION_METHOD_ASSOC,
-           ?P_AUTHENTICATION_DATA_ASSOC
+          p_authentication_method => utf8string(),
+          p_authentication_data => binary()
          }.
 
 -type auth_modifiers() ::

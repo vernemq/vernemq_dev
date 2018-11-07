@@ -14,14 +14,14 @@
 
 -type deliver_properties() ::
         #{
-           ?P_PAYLOAD_FORMAT_INDICATOR_ASSOC,
-           ?P_MESSAGE_EXPIRY_INTERVAL_ASSOC,
-           ?P_TOPIC_ALIAS_ASSOC,
-           ?P_RESPONSE_TOPIC_ASSOC,
-           ?P_CORRELATION_DATA_ASSOC,
-           ?P_USER_PROPERTY_ASSOC,
-           ?P_SUBSCRIPTION_ID_ASSOC,
-           ?P_CONTENT_TYPE_ASSOC
+          p_payload_format_indicator => unspecified | utf8,
+          p_message_expiry_interval => seconds(),
+          p_topic_alias => 1..65535,
+          p_response_topic => topic(),
+          p_correlation_data => binary(),
+          p_user_property => [user_property()],
+          p_subscription_id => [subscription_id()],
+          p_content_type => utf8string()
          }.
 
 -type msg_modifier() ::

@@ -14,8 +14,8 @@
 
 -type sub_properties() ::
         #{
-           ?P_SUBSCRIPTION_ID_ASSOC,
-           ?P_USER_PROPERTY_ASSOC
+          p_subscription_id => [subscription_id()],
+          p_user_property => [user_property()]
          }.
 
 -type sub_modifiers() ::

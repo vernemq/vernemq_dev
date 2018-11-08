@@ -18,5 +18,6 @@
 
 -type unsub_modifiers() ::
         #{
-           topics => [topic()]
+          %% Change the topics which will be unsubscribed.
+          topics => [topic()]
          }.

@@ -26,8 +26,11 @@
 
 -type msg_modifier() ::
         #{
-           topic => topic(),
-           payload => payload()
+          %% Rewrite the topic of the message.
+          topic => topic(),
+
+          %% Rewrite the payload of the message.
+          payload => payload()
          }.
 
 -export_type([msg_modifier/0]).

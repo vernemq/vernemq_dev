@@ -1,8 +1,6 @@
 %% @hidden
 -module(on_deliver_hook).
 -include("vernemq_dev.hrl").
--type msg_modifier() :: {topic, topic()}
-                      | {payload, payload()}.
 
 -callback on_deliver(UserName      :: username(),
                      SubscriberId  :: subscriber_id(),
@@ -11,5 +9,13 @@
                                                     | {ok, Payload    :: payload()}
                                                     | {ok, Modifiers  :: [msg_modifier()]}
                                                     | next.
+
+-type msg_modifier() ::
+        %% Rewrite the topic of the message.
+        {topic, topic()}
+
+        %% Rewrite the payload of the message.
+      | {payload, payload()}.
+
 
 -export_type([msg_modifier/0]).

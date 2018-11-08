@@ -20,7 +20,8 @@
 
 -type sub_modifiers() ::
         #{
-           topics => [{Topic :: topic(), SubInfo :: subinfo()}]
+          %% Change the topics which will be subscribed.
+          topics => [{Topic :: topic(), SubInfo :: subinfo()}]
          }.
 
 -export_type([sub_modifiers/0]).

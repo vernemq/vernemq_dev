@@ -22,8 +22,10 @@
            %% Indicate towards the client if the authentication was
            %% successful or should be continued.
            reason_code => ?SUCCESS | ?CONTINUE_AUTHENTICATION,
+
            %% Specify the authentication method to send to the client.
            auth_method => binary(),
+
            %% Specify the authentication data to send to the client.
            auth_data => binary()
          }.

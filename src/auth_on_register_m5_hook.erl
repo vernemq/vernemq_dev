@@ -29,12 +29,28 @@
 
 -type reg_modifiers()   ::
         #{
-           clean_start => flag(),
-           max_message_size => non_neg_integer(),
-           subscriber_id => subscriber_id(),
-           shared_subscription_policy => shared_sub_policy(),
-           max_online_messages => non_neg_integer(),
-           max_offline_messages => non_neg_integer()
+          %% Change the mountpoint for the session.
+          mountpoint => mountpoint(),
+
+          %% Override the `clean_start` value.
+          clean_start => flag(),
+
+          %% Set the maximum message size the client is allowed to
+          %% publish.
+          max_message_size => non_neg_integer(),
+
+          %% Override the global shared subscription policy for this
+          %% session.
+          shared_subscription_policy => shared_sub_policy(),
+
+          %% Override the global maximum number of online messages for
+          %% this session.
+          max_online_messages => non_neg_integer(),
+
+
+          %% Override the global maximum number of offline messages
+          %% for this session.
+          max_offline_messages => non_neg_integer()
          }.
 
 -type err_reason_code_name() :: ?UNSPECIFIED_ERROR

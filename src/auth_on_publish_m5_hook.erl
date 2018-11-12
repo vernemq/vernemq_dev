@@ -47,7 +47,15 @@
           %% Throttle the publisher for a number of
           %% milliseconds. Note, there is no
           %% back-pressure for websocket connections.
-          throttle => milliseconds()
+          throttle => milliseconds(),
+
+          %% Override the message expiry from the properties or set it
+          %% if not present.
+          message_expiry_interval => seconds(),
+
+          %% Override the user properties from the properties or set
+          %% them if not present.
+          user_property => [user_property()]
          }.
 
 

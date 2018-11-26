@@ -32,7 +32,7 @@ disconnect_by_subscriber_id(SubscriberId, Opts) ->
         not_found ->
             not_found;
         QueuePid ->
-            vmq_queue:force_disconnect(QueuePid, proplists:get_bool(do_cleanup, Opts))
+            vmq_queue:force_disconnect(QueuePid, normal, proplists:get_bool(do_cleanup, Opts))
     end.
 
 %% @doc Convert a {@link topic().} list into an {@link iolist().}

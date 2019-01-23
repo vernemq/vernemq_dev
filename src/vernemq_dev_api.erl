@@ -16,7 +16,8 @@
 -include_lib("vernemq_dev/include/vernemq_dev.hrl").
 
 -export([unword_topic/1,
-         disconnect_by_subscriber_id/2]).
+         disconnect_by_subscriber_id/2,
+         reauthorize_subscriptions/3]).
 
 -type disconnect_flag() :: do_cleanup.
 
@@ -34,6 +35,53 @@ disconnect_by_subscriber_id(SubscriberId, Opts) ->
         QueuePid ->
             vmq_queue:force_disconnect(QueuePid, normal, proplists:get_bool(do_cleanup, Opts))
     end.
+
+%% @doc Reauthorize subscriptions by username and subscriber_id
+%%
+%% Given a username and subscriber_id all subscriptions
+%% of a matching client are reauthorized against the
+%% currently installed `auth_on_subscribe` hooks.
+-spec reauthorize_subscriptions(Username, SubscriberId, Opts) -> {vmq_subscriber:changes(), vmq_subscriber:changes()} when
+      Username :: username(),
+      SubscriberId :: subscriber_id(),
+      Opts :: list().
+reauthorize_subscriptions(Username, SubscriberId, _Opts) ->
+    Subs0 = vmq_subscriber_db:read(SubscriberId, []),
+    Subs1 =
+    vmq_subscriber:fold(
+      fun({Topic, SubInfo, Node}, AccSubs0) ->
+              IsMQTT5 = is_tuple(SubInfo),
+              HookRet =
+              case IsMQTT5 of
+                  true ->
+                      vmq_plugin:all_till_ok(auth_on_subscribe_m5,
+                                             [Username, SubscriberId, [{Topic, SubInfo}], #{}]);
+                  false ->
+                      vmq_plugin:all_till_ok(auth_on_subscribe,
+                                             [Username, SubscriberId, [{Topic, SubInfo}]])
+              end,
+              case HookRet of
+                  ok ->
+                      AccSubs0;
+                  {ok, Modifiers} when IsMQTT5 ->
+                      NewTopics = maps:get(topics, Modifiers, []),
+                      {AccSubs1, _} = vmq_subscriber:add(AccSubs0, NewTopics, Node),
+                      AccSubs1;
+                  {ok, NewTopics} ->
+                      {AccSubs1, _} = vmq_subscriber:add(AccSubs0, NewTopics, Node),
+                      AccSubs1;
+                  {error, _Reason} ->
+                      {AccSubs1, _} = vmq_subscriber:remove(AccSubs0, [Topic], Node),
+                      AccSubs1
+              end
+      end, Subs0, Subs0),
+
+    case Subs0 == Subs1 of
+        true -> ok;
+        false ->
+            vmq_subscriber_db:store(SubscriberId, Subs1)
+    end,
+    vmq_subscriber:get_changes(Subs0, Subs1).
 
 %% @doc Convert a {@link topic().} list into an {@link iolist().}
 %% which can be flattened into a binary.

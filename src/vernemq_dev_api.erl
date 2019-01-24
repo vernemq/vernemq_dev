@@ -40,7 +40,8 @@ disconnect_by_subscriber_id(SubscriberId, Opts) ->
 %%
 %% Given a username and subscriber_id all subscriptions
 %% of a matching client are reauthorized against the
-%% currently installed `auth_on_subscribe` hooks.
+%% currently installed `auth_on_subscribe` and
+%% `auth_on_subscribe_m5` hooks.
 -spec reauthorize_subscriptions(Username, SubscriberId, Opts) -> {vmq_subscriber:changes(), vmq_subscriber:changes()} when
       Username :: username(),
       SubscriberId :: subscriber_id(),

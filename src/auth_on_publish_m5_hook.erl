@@ -55,7 +55,15 @@
 
           %% Override the user properties from the properties or set
           %% them if not present.
-          user_property => [user_property()]
+          user_property => [user_property()],
+
+          %% Override the response topic from the properties or set if
+          %% not present.
+          response_topic => topic(),
+
+          %% Override the correlation data from the properties or set
+          %% if not present.
+          correlation_data => binary()
          }.
 
 

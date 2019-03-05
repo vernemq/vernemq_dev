@@ -5,8 +5,8 @@
 -callback on_deliver_m5(UserName      :: username(),
                         SubscriberId  :: subscriber_id(),
                         Topic         :: topic(),
-                        Properties    :: deliver_properties(),
-                        Payload       :: payload()) ->
+                        Payload       :: payload(),
+                        Properties    :: deliver_properties()) ->
     ok |
     {ok, Payload    :: payload()} |
     {ok, Modifiers  :: msg_modifier()} |

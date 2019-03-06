@@ -49,21 +49,24 @@
           %% back-pressure for websocket connections.
           throttle => milliseconds(),
 
-          %% Override the message expiry from the properties or set it
-          %% if not present.
-          message_expiry_interval => seconds(),
+          properties =>
+              #{
+                %% Override the message expiry from the properties or set it
+                %% if not present.
+                p_message_expiry_interval => seconds(),
 
-          %% Override the user properties from the properties or set
-          %% them if not present.
-          user_property => [user_property()],
+                %% Override the user properties from the properties or set
+                %% them if not present.
+                p_user_property => [user_property()],
 
-          %% Override the response topic from the properties or set if
-          %% not present.
-          response_topic => topic(),
+                %% Override the response topic from the properties or set if
+                %% not present.
+                p_response_topic => topic(),
 
-          %% Override the correlation data from the properties or set
-          %% if not present.
-          correlation_data => binary()
+                %% Override the correlation data from the properties or set
+                %% if not present.
+                p_correlation_data => binary()
+               }
          }.
 
 

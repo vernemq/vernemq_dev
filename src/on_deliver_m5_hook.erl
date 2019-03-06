@@ -30,7 +30,21 @@
           topic => topic(),
 
           %% Rewrite the payload of the message.
-          payload => payload()
+          payload => payload(),
+
+          properties => #{
+                          %% Override the user properties from the properties or set
+                          %% them if not present.
+                          p_user_property => [user_property()],
+
+                          %% Override the response topic from the properties or set if
+                          %% not present.
+                          p_response_topic => topic(),
+
+                          %% Override the correlation data from the properties or set
+                          %% if not present.
+                          p_correlation_data => binary()
+                         }
          }.
 
 -export_type([msg_modifier/0]).

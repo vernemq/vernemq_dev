@@ -52,9 +52,11 @@
           %% for this session.
           max_offline_messages => non_neg_integer(),
 
-          %% Override the session expiry from the properties or set it
-          %% if not present.
-          session_expiry_interval => seconds()
+          properties => #{
+                          %% Override the session expiry from the
+                          %% properties or set it if not present.
+                          p_session_expiry_interval => seconds()
+                         }
          }.
 
 -type err_reason_code_name() :: ?UNSPECIFIED_ERROR

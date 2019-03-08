@@ -24,7 +24,7 @@
           p_max_packet_size => 1..4294967296,
           p_request_response_info => boolean(),
           p_request_problem_info => boolean(),
-          p_user_property => [user_property()]
+          p_user_property => nonempty_list(user_property())
          }.
 
 -type reg_modifiers()   ::

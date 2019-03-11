@@ -13,21 +13,24 @@
 
 -type auth_properties() ::
         #{
-          p_authentication_method => utf8string(),
-          p_authentication_data => binary()
+          p_authentication_method := utf8string(),
+          p_authentication_data := binary()
          }.
 
 -type auth_modifiers() ::
         #{
-           %% Indicate towards the client if the authentication was
-           %% successful or should be continued.
-           reason_code => ?SUCCESS | ?CONTINUE_AUTHENTICATION,
+          %% Indicate towards the client if the authentication was
+          %% successful or should be continued.
+          reason_code => ?SUCCESS | ?CONTINUE_AUTHENTICATION,
 
-           %% Specify the authentication method to send to the client.
-           auth_method => binary(),
+          properties :=
+                #{
+                  %% Specify the authentication method to send to the client.
+                  p_authentication_method := binary(),
 
-           %% Specify the authentication data to send to the client.
-           auth_data => binary()
+                  %% Specify the authentication data to send to the client.
+                  p_authentication_data := binary()
+                 }
          }.
 
 -type err_values() ::

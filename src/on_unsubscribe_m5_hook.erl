@@ -13,7 +13,7 @@
 
 -type unsub_properties() ::
         #{
-          p_user_property => [user_property()]
+          p_user_property => nonempty_list(user_property())
          }.
 
 -type unsub_modifiers() ::

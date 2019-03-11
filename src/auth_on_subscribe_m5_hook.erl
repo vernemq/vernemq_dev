@@ -15,7 +15,7 @@
 -type sub_properties() ::
         #{
           p_subscription_id => [subscription_id()],
-          p_user_property => [user_property()]
+          p_user_property => nonempty_list(user_property())
          }.
 
 -type sub_modifiers() ::

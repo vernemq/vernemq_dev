@@ -23,7 +23,7 @@
           p_response_topic => topic(),
           p_correlation_data => binary(),
           p_topic_alias => 1..65535,
-          p_user_property => [user_property()]
+          p_user_property => nonempty_list(user_property())
          }.
 
 -type msg_modifier() ::
@@ -49,13 +49,30 @@
           %% back-pressure for websocket connections.
           throttle => milliseconds(),
 
-          %% Override the message expiry from the properties or set it
-          %% if not present.
-          message_expiry_interval => seconds(),
+          properties =>
+              #{
+                %% Override the payload format indicator
+                p_payload_format_indicator => unspecified | utf8,
 
-          %% Override the user properties from the properties or set
-          %% them if not present.
-          user_property => [user_property()]
+                %% Override the content type
+                p_content_type => utf8string(),
+
+                %% Override the message expiry from the properties or set it
+                %% if not present.
+                p_message_expiry_interval => seconds(),
+
+                %% Override the user properties from the properties or set
+                %% them if not present.
+                p_user_property => nonempty_list(user_property()),
+
+                %% Override the response topic from the properties or set if
+                %% not present.
+                p_response_topic => topic(),
+
+                %% Override the correlation data from the properties or set
+                %% if not present.
+                p_correlation_data => binary()
+               }
          }.
 
 

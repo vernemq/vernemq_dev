@@ -24,7 +24,7 @@
           p_max_packet_size => 1..4294967296,
           p_request_response_info => boolean(),
           p_request_problem_info => boolean(),
-          p_user_property => [user_property()]
+          p_user_property => nonempty_list(user_property())
          }.
 
 -type reg_modifiers()   ::
@@ -52,9 +52,11 @@
           %% for this session.
           max_offline_messages => non_neg_integer(),
 
-          %% Override the session expiry from the properties or set it
-          %% if not present.
-          session_expiry_interval => seconds()
+          properties => #{
+                          %% Override the session expiry from the
+                          %% properties or set it if not present.
+                          p_session_expiry_interval => seconds()
+                         }
          }.
 
 -type err_reason_code_name() :: ?UNSPECIFIED_ERROR

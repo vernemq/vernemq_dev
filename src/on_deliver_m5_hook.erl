@@ -4,8 +4,10 @@
 
 -callback on_deliver_m5(UserName      :: username(),
                         SubscriberId  :: subscriber_id(),
+                        QoS           :: qos(),
                         Topic         :: topic(),
                         Payload       :: payload(),
+                        IsRetain      :: flag(),
                         Properties    :: deliver_properties()) ->
     ok |
     {ok, Modifiers  :: msg_modifier()} |
@@ -30,6 +32,12 @@
 
           %% Rewrite the payload of the message.
           payload => payload(),
+
+          %% Rewrite the QoS of the message.
+          qos => qos(),
+
+          %% Rewrite the retain flag of the message.
+          retain => flag(),
 
           properties =>
               #{

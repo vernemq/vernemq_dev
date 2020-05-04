@@ -17,6 +17,7 @@
 
 -export([unword_topic/1,
          disconnect_by_subscriber_id/2,
+         has_session/1,
          reauthorize_subscriptions/3]).
 
 -type disconnect_flag() :: do_cleanup.
@@ -34,6 +35,20 @@ disconnect_by_subscriber_id(SubscriberId, Opts) ->
             not_found;
         QueuePid ->
             vmq_queue:force_disconnect(QueuePid, normal, proplists:get_bool(do_cleanup, Opts))
+    end.
+
+%% @doc Check if a {@link subscriber_id().} has an existing session
+%%
+%% Given a subscriber_id, this function checks if it has an existing
+%% session.
+-spec has_session(SId) -> true | false when
+      SId  :: subscriber_id().
+has_session(SubscriberId) ->
+    case vmq_subscriber_db:read(SubscriberId) of
+        undefined ->
+            false;
+        _Subs ->
+            true
     end.
 
 %% @doc Reauthorize subscriptions by username and subscriber_id

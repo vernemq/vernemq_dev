@@ -37,6 +37,7 @@
 
 <h2><a name="index">Function Index</a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#disconnect_by_subscriber_id-2">disconnect_by_subscriber_id/2</a></td><td>Disconnect a client by <a href="#type-subscriber_id"><code>subscriber_id()</code></a></td></tr>
+<tr><td valign="top"><a href="#has_session-1">has_session/1</a></td><td>Check if a <a href="#type-subscriber_id"><code>subscriber_id()</code></a> has an existing session.</td></tr>
 <tr><td valign="top"><a href="#unword_topic-1">unword_topic/1</a></td><td>Convert a <a href="#type-topic"><code>topic()</code></a> list into an <a href="#type-iolist"><code>iolist()</code></a>  
 which can be flattened into a binary.</td></tr>
 </table>
@@ -51,6 +52,15 @@ which can be flattened into a binary.</td></tr>
  
   Given a subscriber_id the client is looked up in the cluster and
   disconnected.</p>
+
+<h3 class="function"><a name="has_session-1">has_session/1</a></h3>
+<div class="spec">
+  <p><tt>has_session(SId) -&gt; true | false</tt>
+    <ul class="definitions"><li><tt>SId = <a href="#type-subscriber_id">subscriber_id()</a></tt></li>></ul></p>
+</div><p><p>Check if a <a href="#type-subscriber_id"><code>subscriber_id()</code> has an existing session</a></p>
+ 
+  Given a subscriber_id, this function checks if it has an existing
+  session.</p>
 
 <h3 class="function"><a name="unword_topic-1">unword_topic/1</a></h3>
 <div class="spec">

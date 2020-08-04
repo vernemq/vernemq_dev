@@ -61,4 +61,4 @@
                }
          }.
 
--export_type([msg_modifier/0]).
+-export_type([msg_modifier/0, deliver_properties/0]).

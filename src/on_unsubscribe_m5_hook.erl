@@ -21,3 +21,5 @@
           %% Change the topics which will be unsubscribed.
           topics => [topic()]
          }.
+
+-export_type([unsub_modifiers/0, unsub_properties/0]).

@@ -81,4 +81,4 @@
            reason_code => reason_code_name()
          }.
 
--export_type([msg_modifier/0]).
+-export_type([msg_modifier/0, pub_properties/0, error_values/0]).

@@ -24,4 +24,4 @@
           topics => [{Topic :: topic(), SubInfo :: subinfo()}]
          }.
 
--export_type([sub_modifiers/0]).
+-export_type([sub_modifiers/0, sub_properties/0]).

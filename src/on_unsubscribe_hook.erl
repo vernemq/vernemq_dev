@@ -13,3 +13,5 @@
 -type unsub_modifiers() ::
         %% Change the topics which will be unsubscribed.
         [Topic :: topic()].
+
+-export_type([unsub_modifiers/0]).

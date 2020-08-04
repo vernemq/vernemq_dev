@@ -80,3 +80,5 @@
                               | ?USE_ANOTHER_SERVER
                               | ?SERVER_MOVED
                               | ?CONNECTION_RATE_EXCEEDED.
+
+-export_type([reg_modifiers/0, err_reason_code_name/0, reg_properties/0]).

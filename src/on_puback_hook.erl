@@ -5,6 +5,5 @@
 %% called as an 'all'-hook, return value is ignored
 -callback on_puback(UserName      :: username(),
     SubscriberId  :: subscriber_id(),
-    QoS           :: qos(),
     Topic         :: topic(),
     Payload       :: payload()) -> any().

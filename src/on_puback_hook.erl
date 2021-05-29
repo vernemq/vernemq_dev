@@ -7,5 +7,4 @@
     SubscriberId  :: subscriber_id(),
     QoS           :: qos(),
     Topic         :: topic(),
-    Payload       :: payload(),
-    IsRetain      :: flag()) -> any().
+    Payload       :: payload()) -> any().

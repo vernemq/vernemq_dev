@@ -1,6 +1,7 @@
 .eunit
 deps
 _build
+.idea
 *.o
 *.beam
 *.plt

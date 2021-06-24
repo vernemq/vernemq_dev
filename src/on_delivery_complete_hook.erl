@@ -5,5 +5,7 @@
 %% called as an 'all'-hook, return value is ignored
 -callback on_delivery_complete(UserName      :: username(),
                                SubscriberId  :: subscriber_id(),
+                               QoS           :: qos(),
                                Topic         :: topic(),
-                               Payload       :: payload()) -> any().
+                               Payload       :: payload(),
+                               IsRetain      :: flag()) -> any().

@@ -10,7 +10,7 @@
 -type subscriber_id()       :: {mountpoint(), client_id()}.
 -type reg_view()            :: atom().
 -type topic()               :: [binary()] | binary(). %% binary() for test purposes only.
--type qos()                 :: 0 | 1 | 2.
+-type qos()                 :: 0 | 1 | 2 | 3.
 -type payload()             :: binary().
 -type flag()                :: ?true | ?false | boolean() | empty. % empty for test purposes only
 -type subopts() :: map().
@@ -28,6 +28,7 @@
 -define(GRANTED_QOS0,                   granted_qos0).
 -define(GRANTED_QOS1,                   granted_qos1).
 -define(GRANTED_QOS2,                   granted_qos2).
+-define(GRANTED_QOS3,                   granted_qos3).
 -define(DISCONNECT_WITH_WILL_MSG,       disconnect_with_will_msg).
 -define(NO_MATCHING_SUBSCRIBERS,        no_matching_subscribers).
 -define(NO_SUBSCRIPTION_EXISTED,        no_subscription_existed).
@@ -103,6 +104,7 @@
                           | ?GRANTED_QOS0
                           | ?GRANTED_QOS1
                           | ?GRANTED_QOS2
+                          | ?GRANTED_QOS3
                           | ?DISCONNECT_WITH_WILL_MSG
                           | ?NO_MATCHING_SUBSCRIBERS
                           | ?NO_SUBSCRIPTION_EXISTED

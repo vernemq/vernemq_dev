@@ -4,7 +4,7 @@
 -define(false, 0).
 -type peer()                :: {inet:ip_address(), inet:port_number()}.
 -type username()            :: binary() | undefined.
--type password()            :: binary() | undefined.
+-type password()            :: binary() | {encrypted, binary()} | {plaintext, binary()} |  undefined.
 -type client_id()           :: binary().
 -type mountpoint()          :: string().
 -type subscriber_id()       :: {mountpoint(), client_id()}.

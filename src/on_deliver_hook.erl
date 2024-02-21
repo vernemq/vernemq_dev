@@ -31,13 +31,7 @@
         {topic, topic()}
 
         %% Rewrite the payload of the message.
-      | {payload, payload()}
-
-        %% Rewrite the QoS of the message.
-      | {qos, qos()}
-
-        %% Rewrite the retain flag of the message.
-      | {retain, flag()}.
+      | {payload, payload()}.
 
 
 -export_type([msg_modifier/0]).

@@ -11,6 +11,18 @@
                                                            | {ok, [reg_modifiers()]}
                                                            | {error, invalid_credentials | any()}
                                                            | next.
+%% optional callback including Opts map, for easier future extensions
+-callback auth_on_register(Peer          :: peer(),
+                           SubscriberId  :: subscriber_id(),
+                           UserName      :: username(),
+                           Password      :: password(),
+                           CleanSession  :: flag(),
+                           Opts          :: map()) -> ok
+                                                           | {ok, [reg_modifiers()]}
+                                                           | {error, invalid_credentials | any()}
+                                                           | next.
+-optional_callbacks([auth_on_register/6]).
+
 -type reg_modifiers()   ::
         %% Change the mountpoint for the session.
         {mountpoint, mountpoint()}

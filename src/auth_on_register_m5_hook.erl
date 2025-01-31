@@ -16,6 +16,22 @@
     {error, atom()} | %% will be turned into ?NOT_AUTHORIZED
     next.
 
+%% optional callback including Opts map, for easier future extensions
+-callback auth_on_register_m5(Peer          :: peer(),
+                              SubscriberId  :: subscriber_id(),
+                              UserName      :: username(),
+                              Password      :: password(),
+                              CleanStart    :: flag(),
+                              Properties    :: reg_properties(),
+                              Opts          :: map()) ->
+    ok |
+    {ok, reg_modifiers()} |
+    {error, #{reason_code => err_reason_code_name()}} |
+    {error, atom()} | %% will be turned into ?NOT_AUTHORIZED
+    next.
+
+-optional_callbacks([auth_on_register_m5/7]).
+
 -type reg_properties() ::
         #{
           p_session_expiry_interval => seconds(),
